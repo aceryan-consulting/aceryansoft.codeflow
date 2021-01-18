@@ -132,7 +132,7 @@ Don't you want to join projects were legacy code is written as this showcase ?
 
 
 ## Contributing
-All contribution are welcome, please contact the author.
+All contribution are welcome, please read the [Code of conduct](https://github.com/aceryan-consulting/aceryansoft.codeflow/blob/develop/CODE_OF_CONDUCT.md) and contact the author.
 
 ## Documentation
 Please read [wiki](https://github.com/aceryan-consulting/aceryansoft.codeflow/wiki).

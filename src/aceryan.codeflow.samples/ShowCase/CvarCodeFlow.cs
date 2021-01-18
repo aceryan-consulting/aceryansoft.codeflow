@@ -31,9 +31,7 @@ namespace aceryan.codeflow.samples.ShowCase
                     var context = new CvarContext() { Criteria = new SearchCriteria() { Filter = "otc trades" } };
                     context.RequestId = string.IsNullOrEmpty(requestId) ? context.RequestId : requestId;
                     return context;
-                })
-                .UseMiddleware<IExceptionHandlingMiddleware>()
-                .UseActivityFilter<IAppLogActivityFilter>()
+                }).UseMiddleware<IExceptionHandlingMiddleware>().UseActivityFilter<IAppLogActivityFilter>()
                 .RerunMode(rerunMode).RestorePointId(restorePoint).WithServiceResolver(_serviceResolver);
             })
             .Do<ICodeFlowActivity>("LoadTrades")
@@ -52,13 +50,11 @@ namespace aceryan.codeflow.samples.ShowCase
             .Switch((ctx, inputs) => ctx.GetValue<string>("SimulationAlgorithm"))
                 .Case((val, inputs) => val?.ToString()== "MonteCarlo")
                     .Call((ctx, inputs) =>
-                    {
-                        //Compute diffusion on each riskfactor, default date, scenario with MonteCarlo algorithm
+                    {//Compute diffusion on each riskfactor, default date, scenario with MonteCarlo algorithm
                     })
                 .Case((val, inputs) => val?.ToString() == "LossCalculation")
                     .Call((ctx, inputs) =>
-                    {
-                        //Compute diffusion on each riskfactor, default date, scenario with LossCalculation algorithm
+                    {//Compute diffusion on each riskfactor, default date, scenario with LossCalculation algorithm
                     })
             .CloseSwitch()
             .RestorePoint("restore.after.diffusion", SaveRestorePointContextState, LoadRestorePointContextState)
@@ -72,12 +68,10 @@ namespace aceryan.codeflow.samples.ShowCase
                     .Close()
                 .Close()
             .CloseForEach()
-            .Call((ctx, inputs) =>
-            {
-                //Save computation results to database ... 
+            .Call((ctx, inputs) => 
+            { //Save computation results to database ... 
             })
             .Close();
-
             cvarcodeFlow.Execute(); 
         }
 

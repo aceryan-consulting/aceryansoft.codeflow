@@ -1,0 +1,32 @@
+************** Release note : version 1.2021.01.10 **************
+=> What's new 
+simple and fluent api 
+middleware pipeline (error)
+activity filter pipeline (logs,perfs)
+activity flow executers (Do,Call)
+sequence flow containers (if, while)
+parallel flow containers (parallel)
+switch flow container (switch, case, default) 
+iterator flow container (ForEach), with sequential and parallel execution
+function flow container (Func) with inputs and result
+reusable codeflow (CallCodeFlow)
+RestorePoint to enhance codeflow rerun and state saving
+multi target package (dotnet standard 2.0 and dotnet framework 4.5.2)
+
+=> Bug fixes 
+
+
+
+
+************** Release note : version 1.2021.01.10 **************
+=> What's new 
+
+
+=> Bug fixes 
+
+
+
+ 
+ 
+
+ 

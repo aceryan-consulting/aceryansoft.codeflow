@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks Condition="'$(CoreOnly)' != 'True'">netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks Condition="'$(CoreOnly)' == 'True'">netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    
+    <Version>1.0.0.0</Version>
+    <Authors>Yannick Cyrille Nganko</Authors>
+    <owners>Aceryan consulting</owners>
+    <Company>Aceryan consulting</Company>
+    <RepositoryUrl>https://github.com/aceryan-consulting/aceryansoft.codeflow</RepositoryUrl>
+    <Copyright>aceryan consulting Copyright 2021</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>aceryansoft.codeflow.core</_Parameter1> 
+    </AssemblyAttribute>
+
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>aceryansoft.codeflow.tests</_Parameter1> 
+    </AssemblyAttribute>
+  </ItemGroup>
+
+
+</Project>

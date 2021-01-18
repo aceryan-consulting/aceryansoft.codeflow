@@ -1,0 +1,11 @@
+
+*** ToDo Devops 
+Create and secure git repo 
+create wiki and documentation 
+create and publish nuget package 
+
+
+Todo Dev
+Add testing helper to check that all activities constructor only use interface (dependency inversion)
+Add testing helper to check that all activities are well registered in DI container. 
+Create aceryan.codeflow.activities with usefull activities 

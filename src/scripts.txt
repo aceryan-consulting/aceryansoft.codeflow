@@ -1,0 +1,2 @@
+local nuget packaging in src folder  
+dotnet pack ./aceryansoft.codeflow.core/aceryansoft.codeflow.core.csproj /p:version=1.20.12.26 -o nupkgs -c release 

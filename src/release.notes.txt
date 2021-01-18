@@ -1,4 +1,4 @@
-************** Release note : version 1.2021.01.10 **************
+************** Release note : version 1.21.01.18 **************
 => What's new 
 simple and fluent api 
 middleware pipeline (error)
@@ -18,7 +18,7 @@ multi target package (dotnet standard 2.0 and dotnet framework 4.5.2)
 
 
 
-************** Release note : version 1.2021.01.10 **************
+************** Release note : version 1.21.XX.XX **************
 => What's new 
 
 

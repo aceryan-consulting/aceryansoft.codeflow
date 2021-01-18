@@ -23,6 +23,8 @@
     </PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/aceryan-consulting/aceryansoft.codeflow</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 

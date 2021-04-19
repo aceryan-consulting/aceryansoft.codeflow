@@ -27,21 +27,6 @@ namespace aceryan.codeflow.samples.ShowCase
         public List<Trade> Trades { get; set; } = new List<Trade>();
         public SearchCriteria Criteria { get; set; }
         public string SimulationAlgorithm { get; set; } = "MonteCarlo";
-
-        public CvarContext()
-        {
-            ContextProperties["Criteria"] = new ContextProperty(() => Criteria, (obj) => { Criteria = (SearchCriteria)obj; });
-            ContextProperties["SimulationAlgorithm"] = new ContextProperty(() => SimulationAlgorithm, (obj) => { SimulationAlgorithm = obj?.ToString(); });
-            ContextProperties["Trades"] = new ContextProperty(() => Trades, (obj) => { Trades = (List<Trade>)obj; });
-            ContextProperties["CounterpartyParameters"] = new ContextProperty(() => CtyParameters, (obj) => { CtyParameters = (ConcurrentBag<CtyComputeParameter>)obj; });
-            ContextProperties["CtyResults"] = new ContextProperty(() => CtyResults, (obj) => { CtyResults = (ConcurrentBag<CtyComputeResult>)obj; });
-            ContextProperties["SharedInputs"] = new ContextProperty(() => SharedInputs, (obj) => { SharedInputs = (ConcurrentBag<SharedComputeInputs>)obj; });
-        }
-        public override T As<T>()
-        {
-            if (typeof(T) == typeof(CvarContext))
-                return this as T;
-            throw new NotImplementedException();
-        }
+         
     }
 }

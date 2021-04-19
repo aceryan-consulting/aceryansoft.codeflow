@@ -17,27 +17,18 @@ namespace aceryansoft.codeflow.test
         public long Id { get; set; }
         public string Name { get; set; }        
     }
-    public class TestCodeFlowContext : CodeFlowContext
+
+    public class BaseTestCodeFlowContext : CodeFlowContext
+    {        
+        public SomeUser Manager { get; set; } = new SomeUser();
+        public int SomeIndex { get; set; }
+    }
+
+    public class TestCodeFlowContext : BaseTestCodeFlowContext
     {
         public List<SomeUser> Users { get; set; } = new List<SomeUser>();
-        public SomeUser Manager { get; set; } = new SomeUser();
-
-        public int SomeIndex { get; set; }
         public ConcurrentBag<int> ThreadCallStack { get; set; } = new ConcurrentBag<int>();
-        public ConcurrentBag<string> ConcurrentCallStack { get; set; } = new ConcurrentBag<string>();
-        public TestCodeFlowContext()
-        { 
-            ContextProperties["SomeIndex"] = new ContextProperty(() => SomeIndex, (obj) => { SomeIndex = int.Parse(obj?.ToString()); });
-            ContextProperties["Manager"] = new ContextProperty(() => Manager, (obj) => { Manager = (SomeUser) obj ; });
-            ContextProperties["Users"] = new ContextProperty(() => Users, (obj) => { Users = (List<SomeUser>) obj ; });
-        }
-
-        public override T As<T>()
-        {
-            if (typeof(T) == typeof(TestCodeFlowContext))
-                return this as T;
-            return base.As<T>();
-        }
+        public ConcurrentBag<string> ConcurrentCallStack { get; set; } = new ConcurrentBag<string>();     
     }
 
 
@@ -92,7 +83,7 @@ namespace aceryansoft.codeflow.test
             Check.ThatCode(() =>
             {
                 context.SetValue<string>("SomeIndex", "t");
-            }).Throws<FormatException>();
+            }).Throws<ArgumentException>();
         }
 
         [TestMethod]
@@ -128,6 +119,25 @@ namespace aceryansoft.codeflow.test
                  context.ThreadCallStack.Add(Thread.CurrentThread.ManagedThreadId);
              });
             Check.That(context.ThreadCallStack.Distinct().Count()).IsStrictlyGreaterThan(1);
+        }
+
+        [TestMethod]
+        public void should_cast_context_to_itself_or_any_parent_type()
+        {
+            var context = new TestCodeFlowContext();
+            context.SetValue<int>("SomeIndex", 7);
+            context.SetValue<SomeUser>("Manager", new SomeUser() { Id = 4, Name = "it manager" });
+
+            var sameContext = context.As<TestCodeFlowContext>();
+            Check.That(sameContext).IsNotNull(); 
+            Check.That(sameContext.GetValue<int>("SomeIndex")).IsEqualTo(7);
+
+            var baseContext = context.As<BaseTestCodeFlowContext>();
+            Check.That(baseContext).IsNotNull();
+            Check.That(baseContext.GetValue<SomeUser>("Manager").Id).IsEqualTo(4);
+
+            var topLevelContext = context.As<CodeFlowContext>();
+            Check.That(topLevelContext).IsNotNull(); 
         }
     }
 }

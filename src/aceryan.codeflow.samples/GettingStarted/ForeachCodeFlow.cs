@@ -37,11 +37,6 @@ namespace aceryan.codeflow.samples.GettingStarted
     public class ForeachContext : CodeFlowContext
     {
         public ConcurrentBag<int> Results { get; set; } = new ConcurrentBag<int>();
-
-        public ForeachContext()
-        {
-            ContextProperties["Results"] = new ContextProperty(() => Results, (obj) => { Results = (ConcurrentBag<int>)obj; });
-        }
     }
 
 }

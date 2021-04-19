@@ -2,7 +2,7 @@
 ![.Net](https://github.com/aceryan-consulting/aceryansoft.codeflow/workflows/.NET/badge.svg)
 
 aceryansoft.codeflow is a C# simple, fluent and feature driven programming framework targeting .Net standard 2.0 and .Net framework 4.5.2 .
-It helps you design and write complex and long running processes by features. 
+It helps design and write complex and long running processes by features. 
 
 First think about your process as an ordered collection of features, then decompose each feature into smaller and less complex sub-features 
 , finally decompose each sub-feature into loosely-coupled activities small enough to be delivered during few days.

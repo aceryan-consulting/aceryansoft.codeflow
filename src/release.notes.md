@@ -1,4 +1,4 @@
-## ************** Release note : version 1.21.01.18 **************
+## *** Release note : version 1.21.01.18 ***
 ###  What's new 
 simple and fluent api 
 
@@ -29,7 +29,7 @@ multi target package (dotnet standard 2.0 and dotnet framework 4.5.2)
 
 
 
-## ************** Release note : version 1.21.04.19 **************
+## *** Release note : version 1.21.04.19 ***
 ### What's new 
 Codeflow context use reflection to ease properties setup 
 

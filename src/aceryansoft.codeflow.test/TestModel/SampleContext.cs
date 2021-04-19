@@ -12,14 +12,5 @@ namespace aceryansoft.codeflow.test.TestModel
         public int LastIndex { get; set; }
         public ConcurrentBag<int> ThreadCallStack { get; set; } = new ConcurrentBag<int>();
         public ConcurrentBag<string> ConcurrentCallStack { get; set; } = new ConcurrentBag<string>();
- 
-        public override T As<T>()
-        {
-            if (typeof(T) == typeof(SampleContext))
-                return this as T;
-
-            return base.As<T>();
-        }
-
     }
 }

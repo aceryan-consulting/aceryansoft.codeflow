@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace aceryansoft.codeflow.model.Config
 {
@@ -35,7 +36,6 @@ namespace aceryansoft.codeflow.model.Config
     {
         public string RequestId { get; set; }
         public string Host { get; set; }
-        protected ConcurrentDictionary<string, ContextProperty> ContextProperties = new ConcurrentDictionary<string, ContextProperty>();
 
         public CodeFlowContext()
         {
@@ -46,13 +46,13 @@ namespace aceryansoft.codeflow.model.Config
         }
 
         public virtual T GetValue<T>(string key)
-        {
-            return (T) ContextProperties[key].Getter(); 
+        { 
+            return (T)GetTargetProperty(key).GetValue(this); 
         }
 
         public virtual void SetValue<T>(string key, T value)
         {
-            ContextProperties[key].Setter(value);
+            GetTargetProperty(key).SetValue(this, value); 
         }
 
         public virtual List<T> GetCollection<T>(string key)
@@ -67,12 +67,20 @@ namespace aceryansoft.codeflow.model.Config
 
         public virtual T As<T>() where T : class,ICodeFlowContext
         {
-            if (typeof(T) == typeof(CodeFlowContext))
+            if (typeof(T) == GetType() || GetType().IsSubclassOf(typeof(T)))
                 return this as T;
             throw new NotImplementedException();
-        }
+        } 
 
-       
+        private PropertyInfo GetTargetProperty(string key)
+        {
+            var targetProp = GetType().GetProperty(key);
+            if (targetProp == null)
+            {
+                throw new KeyNotFoundException($"Can't find property {key} in context");
+            }
+            return targetProp;
+        }
 
      
 

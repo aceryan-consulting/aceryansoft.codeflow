@@ -19,21 +19,6 @@ namespace aceryan.codeflow.samples.GettingStarted
         public decimal LoyaltyThreshold { get; set; }
         public decimal SpendingThreshold { get; set; }
         public int CleanAttempts { get; set; }
-
-        public AiContext()
-        {
-            ContextProperties["Customers"] = new ContextProperty(() => Customers, (obj) => { Customers = (List<Customer>)obj; });
-            ContextProperties["Orders"] = new ContextProperty(() => Orders, (obj) => { Orders = (List<Order>)obj; });
-            ContextProperties["LoyaltyThreshold"] = new ContextProperty(() => LoyaltyThreshold, (obj) => { LoyaltyThreshold = (decimal)obj; });
-            ContextProperties["SpendingThreshold"] = new ContextProperty(() => SpendingThreshold, (obj) => { SpendingThreshold = (decimal)obj; });
-            ContextProperties["CleanAttempts"] = new ContextProperty(() => CleanAttempts, (obj) => { CleanAttempts = (int)obj; });
-        }
-        public override T As<T>()
-        {
-            if (typeof(T) == typeof(AiContext))
-                return this as T;
-            throw new NotImplementedException();
-        }
     }
 
     public enum Gender

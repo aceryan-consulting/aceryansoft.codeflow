@@ -48,6 +48,15 @@
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
       <_Parameter1>aceryansoft.codeflow.tests</_Parameter1>
     </AssemblyAttribute>
+
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>aceryansoft.codeflow_pro.core</_Parameter1>
+    </AssemblyAttribute>
+
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>aceryansoft.codeflow_pro.tests</_Parameter1>
+    </AssemblyAttribute>
+    
   </ItemGroup>
 
 

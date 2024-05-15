@@ -34,6 +34,7 @@ namespace aceryansoft.codeflow.model.FlowApi
     {
         T CallCodeFlow(Action<ICallFlowApi> codeFlowBlock);
         T Parallel();
+        T Sequence();
         T Close();
     }
 
@@ -46,5 +47,7 @@ namespace aceryansoft.codeflow.model.FlowApi
     {
         ICodeFlowApi RestorePoint(string restorePointId, Action<string, string, object[], ICodeFlowContext> contextSaver
             , Func<string, string, ICodeFlowContext> contextProvider);
+
+        //bool IsAllContainerClosed(); todo yannick implement later 
     }
 }

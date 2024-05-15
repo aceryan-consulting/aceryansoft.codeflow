@@ -38,6 +38,13 @@ namespace aceryansoft.codeflow.core.FlowApi
             return _referenceFlowApi;
         }
 
+        public T Sequence()
+        {
+            var sequenceContainer = new SequenceContainerFlow();
+            _containerFlow.AddContainer(sequenceContainer);
+            return _referenceFlowApi;
+        }
+
         public T Close()
         {
             _containerFlow.CloseContainer();
